@@ -1,487 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Priya Beauty Parlour</title>
-    
-    <!-- Google Fonts for modern typography -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Priya Beauty Parlour</title>
 
-    <style>
-        /* =========================================
-           CSS STYLES
-           ========================================= */
-        
-        :root {
-            /* CHANGE COLORS HERE */
-            --primary-color: #e91e63; /* Pink */
-            --secondary-color: #fce4ec; /* Light Pink */
-            --text-color: #333333;
-            --bg-color: #ffffff;
-            --light-grey: #f4f4f4;
-            --white: #ffffff;
-            --shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            color: var(--text-color);
-            line-height: 1.6;
-            background-color: var(--bg-color);
-        }
+body{
+font-family:'Poppins',sans-serif;
+margin:0;
+background:#fff;
+color:#333;
+}
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+header{
+background:#e91e63;
+color:white;
+padding:15px;
+text-align:center;
+font-size:22px;
+font-weight:600;
+}
 
-        ul {
-            list-style: none;
-        }
+section{
+padding:40px 20px;
+}
 
-        /* --- HEADER & NAVIGATION --- */
-        header {
-            background-color: var(--white);
-            box-shadow: var(--shadow);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            padding: 1rem 5%;
-        }
+h2{
+text-align:center;
+color:#e91e63;
+margin-bottom:25px;
+}
 
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:15px;
+}
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+.gallery img{
+width:100%;
+height:240px;
+object-fit:cover;
+border-radius:8px;
+}
 
-        .nav-links {
-            display: flex;
-            gap: 20px;
-        }
+.service{
+background:#fff;
+border-radius:10px;
+box-shadow:0 3px 10px rgba(0,0,0,0.1);
+padding:15px;
+text-align:center;
+}
 
-        .nav-links a {
-            font-weight: 500;
-            transition: color 0.3s;
-        }
+.price{
+font-size:20px;
+font-weight:600;
+color:#e91e63;
+}
 
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
+.offer{
+background:#ff5252;
+color:white;
+display:inline-block;
+padding:4px 10px;
+border-radius:6px;
+margin-top:5px;
+}
 
-        /* Hamburger Menu */
-        .hamburger {
-            display: none;
-            cursor: pointer;
-            font-size: 1.8rem;
-        }
+.btn{
+display:inline-block;
+margin-top:10px;
+background:#e91e63;
+color:white;
+padding:10px 20px;
+border-radius:30px;
+text-decoration:none;
+}
 
-        /* --- HERO SECTION --- */
-        #home {
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=1674&q=80');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: var(--white);
-            padding: 0 20px;
-            margin-top: 60px; /* Offset fixed header */
-        }
+footer{
+background:#333;
+color:white;
+text-align:center;
+padding:20px;
+}
 
-        #home h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
-        #home p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-        }
-
-        .btn {
-            background-color: var(--primary-color);
-            color: var(--white);
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: transform 0.3s, background 0.3s;
-            display: inline-block;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background-color: #c2185b;
-            transform: scale(1.05);
-        }
-
-        /* --- SECTIONS GENERAL --- */
-        section {
-            padding: 60px 5%;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 40px;
-            color: var(--primary-color);
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background: var(--primary-color);
-            margin: 10px auto 0;
-        }
-
-        /* --- SERVICES SECTION --- */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .service-card {
-            background: var(--white);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s;
-            text-align: center;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .service-img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .service-info {
-            padding: 20px;
-        }
-
-        .service-price {
-            color: var(--primary-color);
-            font-weight: 700;
-            font-size: 1.2rem;
-            margin: 10px 0;
-        }
-
-        /* --- PRICE LIST SECTION --- */
-        #price-list {
-            background-color: var(--light-grey);
-        }
-
-        .price-table {
-            width: 100%;
-            max-width: 800px;
-            margin: 0 auto;
-            background: var(--white);
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            overflow: hidden;
-        }
-
-        .price-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 15px 20px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .price-item:last-child {
-            border-bottom: none;
-        }
-
-        .price-item span:first-child {
-            font-weight: 600;
-        }
-
-        .price-item span:last-child {
-            color: var(--primary-color);
-            font-weight: 700;
-        }
-
-        /* --- OFFERS SECTION --- */
-        #offers {
-            background-color: var(--secondary-color);
-            text-align: center;
-        }
-
-        .offer-card {
-            background: var(--white);
-            padding: 30px;
-            border-radius: 10px;
-            display: inline-block;
-            margin: 10px;
-            box-shadow: var(--shadow);
-            max-width: 400px;
-        }
-
-        .offer-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-
-        .discount-badge {
-            background: #ff5252;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 0.9rem;
-            display: inline-block;
-            margin-bottom: 10px;
-        }
-
-        /* --- GALLERY SECTION --- */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-        }
-
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 8px;
-            height: 250px;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-
-        /* --- CONTACT SECTION --- */
-        #contact {
-            background-color: var(--light-grey);
-            text-align: center;
-        }
-
-        .contact-info {
-            margin-bottom: 30px;
-        }
-
-        .contact-item {
-            margin: 15px 0;
-            font-size: 1.1rem;
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            background-color: #333;
-            color: var(--white);
-            text-align: center;
-            padding: 20px;
-        }
-
-        /* --- RESPONSIVE DESIGN --- */
-        @media (max-width: 768px) {
-            .hamburger {
-                display: block;
-            }
-
-            .nav-links {
-                position: absolute;
-                top: 70px;
-                right: -100%;
-                background-color: var(--white);
-                flex-direction: column;
-                width: 100%;
-                text-align: center;
-                padding: 20px 0;
-                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-                transition: 0.3s;
-            }
-
-            .nav-links.active {
-                right: 0;
-            }
-
-            #home h1 {
-                font-size: 2rem;
-            }
-        }
-    </style>
+</style>
 </head>
+
 <body>
 
-    <!-- =========================================
-         HEADER
-         ========================================= -->
-    <header>
-        <nav class="navbar">
-            <div class="logo">Priya Beauty Parlour</div>
-            <div class="hamburger" onclick="toggleMenu()">
-                &#9776; <!-- Hamburger Icon -->
-            </div>
-            <ul class="nav-links">
-                <li><a href="#home" onclick="toggleMenu()">Home</a></li>
-                <li><a href="#services" onclick="toggleMenu()">Services</a></li>
-                <li><a href="#price-list" onclick="toggleMenu()">Price List</a></li>
-                <li><a href="#offers" onclick="toggleMenu()">Offers</a></li>
-                <li><a href="#gallery" onclick="toggleMenu()">Gallery</a></li>
-                <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+<header>
+Priya Beauty Parlour
+</header>
 
-    <!-- =========================================
-         HOME SECTION
-         ========================================= -->
-    <section id="home">
-        <h1>Welcome to Priya Beauty Parlour</h1>
-        <p>Experience luxury, elegance, and relaxation. We make you look and feel your best.</p>
-        <!-- CHANGE PHONE NUMBER IN HREF BELOW -->
-        <a href="https://wa.me/91XXXXXXXXXX" class="btn" data-ai="booking">Book Now</a>
-    </section>
 
-    <!-- =========================================
-         SERVICES SECTION
-         ========================================= -->
-    <section id="services">
-        <h2 class="section-title">Our Services</h2>
-        <div class="services-grid">
-            
-            <!-- Service 1 -->
-            <div class="service-card">
-                <!-- CHANGE IMAGE URL HERE -->
-                <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Haircut" class="service-img">
-                <div class="service-info">
-                    <h3>Hair Styling</h3>
-                    <p>Professional cutting, coloring, and styling for all hair types.</p>
-                    <div class="service-price">₹500</div>
-                    <!-- CHANGE PHONE NUMBER IN HREF BELOW -->
-                    <a href="https://wa.me/91XXXXXXXXXX?text=I%20want%20to%20book%20Hair%20Styling" class="btn" data-ai="booking">Book Now</a>
-                </div>
-            </div>
+<section>
 
-            <!-- Service 2 -->
-            <div class="service-card">
-                <!-- CHANGE IMAGE URL HERE -->
-                <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Facial" class="service-img">
-                <div class="service-info">
-                    <h3>Gold Facial</h3>
-                    <p>Rejuvenate your skin with our premium gold facial treatment.</p>
-                    <div class="service-price">₹1200</div>
-                    <!-- CHANGE PHONE NUMBER IN HREF BELOW -->
-                    <a href="https://wa.me/91XXXXXXXXXX?text=I%20want%20to%20book%20Gold%20Facial" class="btn" data-ai="booking">Book Now</a>
-                </div>
-            </div>
+<h2>Our Beauty Parlour</h2>
 
-            <!-- Service 3 -->
-            <div class="service-card">
-                <!-- CHANGE IMAGE URL HERE -->
-                <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Bridal Makeup" class="service-img">
-                <div class="service-info">
-                    <h3>Bridal Makeup</h3>
-                    <p>Complete bridal package including mehndi and hair styling.</p>
-                    <div class="service-price">₹2500</div>
-                    <!-- CHANGE PHONE NUMBER IN HREF BELOW -->
-                    <a href="https://wa.me/91XXXXXXXXXX?text=I%20want%20to%20book%20Bridal%20Makeup" class="btn" data-ai="booking">Book Now</a>
-                </div>
-            </div>
+<div class="gallery">
 
-        </div>
-    </section>
+<img src="shop1.jpg">
+<img src="shop2.jpg">
+<img src="shop3.jpg">
+<img src="shop4.jpg">
+<img src="shop5.jpg">
 
-    <!-- =========================================
-         PRICE LIST SECTION
-         ========================================= -->
-    <section id="price-list">
-        <h2 class="section-title">Price List</h2>
-        <div class="price-table">
-            <div class="price-item">
-                <span>Hair Cut (Lady)</span>
-                <span>₹150</span>
-            </div>
-            <div class="price-item">
-                <span>Hair Cut (Gentleman)</span>
-                <span>₹100</span>
-            </div>
-            <div class="price-item">
-                <span>Basic Facial</span>
-                <span>₹500</span>
-            </div>
-            <div class="price-item">
-                <span>Threading (Face)</span>
-                <span>₹100</span>
-            </div>
-            <div class="price-item">
-                <span>Manicure & Pedicure</span>
-                <span>₹300</span>
-            </div>
-            <div class="price-item">
-                <span>Bridal Makeup</span>
-                <span>₹2500</span>
-            </div>
-            <div class="price-item">
-                <span>Party Makeup</span>
-                <span>₹1500</span>
-            </div>
-        </div>
-    </section>
+</div>
 
-    <!-- =========================================
-         OFFERS SECTION
-         ========================================= -->
-    <section id="offers">
-        <h2 class="section-title">Special Offers</h2>
-        
-        <div class="offer-card">
-            <span class="discount-badge">30% OFF</span>
-            <h3>Festival Offer</h3>
-            <p>Get 30% off on all hair treatments this Diwali season.</p>
-            <br>
-            <a href="https://wa.me/91XXXXXXXXXX?text=I%20am%20interested%20in%20Festival%20Offer" class="btn" data-ai="offer">Claim Offer</a>
-        </div>
+</section>
 
-        <div class="offer-card">
-            <span class="discount-badge">Bridal Special</span>
-            <h3>Free Trial</h3>
-            <p>Book a full bridal package and get a free trial session.</p>
-            <br>
-            <a href="https://wa.me/91XXXXXXXXXX?text=I%20am%20interested%20in%20Bridal%20Special" class="btn" data-ai="offer">Book Trial</a>
-        </div>
-    </section>
 
-    <!-- =========================================
-         PHOTO GALLERY
-         ========================================= -->
-    <section id="gallery">
-        
+<section>
+
+<h2>Our Services</h2>
+
+<div class="gallery">
+
+<div class="service">
+<img src="service1.jpg">
+<div class="price">₹4000</div>
+<div class="offer">40% OFF</div>
+<a class="btn" href="https://wa.me/91XXXXXXXXXX?text=Hello I want to book service">Book Now</a>
+</div>
+
+
+<div class="service">
+<img src="service2.jpg">
+<div class="price">₹2700</div>
+<div class="offer">30% OFF</div>
+<a class="btn" href="https://wa.me/91XXXXXXXXXX?text=Hello I want to book service">Book Now</a>
+</div>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>Facial</h2>
+
+<div class="service">
+
+<img src="facial.jpg">
+
+<p>
+WE HAVE A LOT OF OPTION IN FACIAL  
+<br>
+Most popular GOLD FACIAL, FRUIT FACIAL
+</p>
+
+<div class="offer">28% OFF</div>
+
+<a class="btn" href="https://wa.me/91XXXXXXXXXX?text=Hello I want to book service">
+Book Now
+</a>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>Other Services</h2>
+
+<p style="text-align:center">
+AND MANY TYPES OF SERVICE WE HAVE LIKE  
+Hair cutting, Threading and many more
+</p>
+
+<div class="gallery">
+
+<img src="service3.jpg">
+<img src="service4.jpg">
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>Address</h2>
+
+<p style="text-align:center">
+
+KUNGAIYA BAZAR  
+<br>
+GONDA (UTTAR PRADESH)
+
+</p>
+
+</section>
+
+
+<footer>
+
+Priya Beauty Parlour ©
+
+</footer>
+
+
+</body>
+</html>
